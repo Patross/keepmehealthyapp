@@ -7,21 +7,82 @@
     android:minHeight="25px">
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:rowCount="1"
+        android:layout_height="wrap_content"
+        android:rowCount="20"
         android:columnCount="2"
-        android:orientation="vertical">
+        android:id="@+id/gridLayout1">
+        <TextView
+            android:text="Welcome to Keep Me Healthy"
+            android:id="@+id/textView1"
+            android:gravity="left"
+            android:height="100dp"
+            android:textSize="60px"
+            android:width="250dp" />
         <ImageButton
-            android:src="@android:drawable/ic_menu_gallery"
-            android:id="@+id/imageButton1"
+            android:src="@drawable/avatar_placeholder"
+            android:id="@+id/btnProfile"
             android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <ImageButton
-            android:src="@android:drawable/ic_menu_gallery"
-            android:id="@+id/imageButton1"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp" />
+        <TextView
+            android:text="Weight"
+            android:id="@+id/textView2" />
+        <Space
+            android:id="@+id/space1" />
+        <EditText
+            android:id="@+id/inputWeight"
+            android:width="230dp" />
+        <Spinner
+            android:id="@+id/spinnerWeight"
+            android:layout_width="130dp" />
+        <TextView
+            android:text="Distance Travelled"
+            android:id="@+id/textView3" />
+        <Space
+            android:id="@+id/space2" />
+        <EditText
+            android:id="@+id/inputDistanceTravelled"
+            android:width="230dp" />
+        <Spinner
+            android:id="@+id/spinnerDistance"
+            android:layout_width="130dp" />
+        <TextView
+            android:text="Time in minutes"
+            android:id="@+id/textView4" />
+        <Space
+            android:id="@+id/space3" />
+        <EditText
+            android:id="@+id/inputTime"
+            android:width="230dp" />
+        <TextView
+            android:text="Activity type"
+            android:id="@+id/textView5"
+            android:layout_marginLeft="20dp" />
+        <Button
+            android:text="Calculate"
+            android:id="@+id/btnCalculate"
+            android:width="230dp" />
+        <RadioGroup
+            android:id="@+id/radioGroup1">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Walking"
+                android:id="@+id/radExerciseWalking" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Running"
+                android:id="@+id/radExerciseRunning" />
+        </RadioGroup>
     </GridLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtCaloriesBurned"
+        android:textSize="20dp" />
 </LinearLayout>
