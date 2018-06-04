@@ -4,6 +4,7 @@ using Android.OS;
 using System.Collections.Generic;
 using Android.Content.Res;
 using System;
+using SQLite;
 
 namespace KeepMeHealthy
 {
@@ -13,7 +14,7 @@ namespace KeepMeHealthy
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
+            
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
@@ -77,6 +78,7 @@ namespace KeepMeHealthy
 
                         const decimal POUNDTOKG = 0.453592m;
                         const decimal MILESTOKM = 1.609m;
+
 
                         if (spinnerWeight.GetItemAtPosition(0).ToString() == "POUNDS")
                         {
