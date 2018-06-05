@@ -2,9 +2,7 @@
 using Android.Widget;
 using Android.OS;
 using System.Collections.Generic;
-using Android.Content.Res;
 using System;
-using SQLite;
 
 namespace KeepMeHealthy
 {
@@ -14,7 +12,7 @@ namespace KeepMeHealthy
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            
+
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
@@ -64,11 +62,11 @@ namespace KeepMeHealthy
             EditText inputDistanceTravelled = FindViewById<EditText>(Resource.Id.inputDistanceTravelled);
             EditText inputTime = FindViewById<EditText>(Resource.Id.inputTime);
 
-            if (decimal.TryParse(inputWeight.Text,out decimal weight))
+            if (decimal.TryParse(inputWeight.Text, out decimal weight))
             {
-                if (decimal.TryParse(inputDistanceTravelled.Text,out decimal distanceTravelled))
+                if (decimal.TryParse(inputDistanceTravelled.Text, out decimal distanceTravelled))
                 {
-                    if (int.TryParse(inputTime.Text,out int time))
+                    if (decimal.TryParse(inputTime.Text, out decimal time))
                     {
                         //EVERYTHING SUCCESSFULLY PARSED IN FROM THE EDIT TEXT FIELDS
 
@@ -89,15 +87,30 @@ namespace KeepMeHealthy
                             distanceTravelled = distanceTravelled * MILESTOKM;
                         }
 
+
                         RadioButton radioExerciseRunning = FindViewById<RadioButton>(Resource.Id.radExerciseRunning);
                         RadioButton radioExerciseWalking = FindViewById<RadioButton>(Resource.Id.radExerciseWalking);
-                        
-                        
-                        txtCaloriesBurned.Text = $"Weight {weight} Distance {distanceTravelled} Time {time}";
+                        decimal temp = ((Func<decimal>)(() =>
+                        {
+
+                            if (radioExerciseRunning.Selected)
+                            {
+                                return 8.5m;
+                            }
+                            else
+                            {
+                                return 3.3m;
+                            }
+
+                        }))();
+
+                        decimal mets = temp;
+
+                        decimal caloriesBurned = (weight * mets) * time;
+                        txtCaloriesBurned.Text = $"You have burned {caloriesBurned} calories by exercising for {time} minutes and travelled {distanceTravelled} KM.";
                     }
                 }
             }
-
         }
     }
 }
